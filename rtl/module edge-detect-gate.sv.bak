@@ -1,0 +1,46 @@
+module edge_detect_gate
+(
+input wire clk50, reset,
+input wire clk22,
+output wire syncclk22
+);
+// s i g n a l d e c l a r a t i o n
+reg delay_reg;
+
+always @(posedge clk50, posedge reset)
+    if(reset)
+    delay_reg <=1'b0;
+    else 
+    delay_reg <= clk22;
+
+    assign tick = ~delay_reg & clk22;
+
+endmodule
+
+
+module edge_detect_gate_tb;
+
+    reg clk50;
+    reg clk22;
+    wire syncclk22;
+
+    edge_detect_gate dut2 (
+        .clk50(clk50),
+        .clk22(clk22),
+        .syncclk22(syncclk22)
+    );
+        
+    forever begin
+        #1 clk50 = ~clk50;
+    end
+    forever begin
+        #500 clk22 = ~clk22;
+    end
+    initial begin
+        clk50 = 1'b0;
+        clk22 = 1'b0;
+    end
+
+endmodule
+
+

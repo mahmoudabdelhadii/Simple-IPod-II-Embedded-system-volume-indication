@@ -1,0 +1,235 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/altera/14.1
+vaddressfsm
+Z0 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+Z1 !s110 1613377778
+!i10b 1
+!s100 @FXG^zM;[TYB0`j[eo3kS3
+IZ@R=IWj^8@FA636lS8i<I2
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+Z3 !s105 flashmemfsm_sv_unit
+S1
+Z4 dC:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim
+Z5 w1613371588
+Z6 8C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\flashmemfsm.sv
+Z7 FC:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\flashmemfsm.sv
+L0 106
+Z8 OV;L;10.3c;59
+r1
+!s85 0
+31
+Z9 !s108 1613377778.204000
+Z10 !s107 C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\flashmemfsm.sv|
+Z11 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\flashmemfsm.sv|
+!i113 1
+Z12 o-work work -sv
+vaddressfsm_tb
+R0
+R1
+!i10b 1
+!s100 3AhM;kWU3D53?H0ADCiBM2
+IHHoO@U<>YKGXTJiCORVcP2
+R2
+Z13 !s105 mem_tb_sv_unit
+S1
+R4
+Z14 w1613377769
+Z15 8C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\mem_tb.sv
+Z16 FC:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\mem_tb.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z17 !s108 1613377778.391000
+Z18 !s107 C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\mem_tb.sv|
+Z19 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\mem_tb.sv|
+!i113 1
+R12
+vasyncsig
+R0
+R1
+!i10b 1
+!s100 PYCZZRRg`<>FS0hj<_<=@1
+ImXX2R]d3M[mf>ek3BA<>R0
+R2
+Z20 !s105 module20edge2ddetect2dgate_sv_unit
+S1
+R4
+Z21 w1613344443
+Z22 8C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv
+Z23 FC:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv
+L0 46
+R8
+r1
+!s85 0
+31
+Z24 !s108 1613377778.016000
+Z25 !s107 C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv|
+Z26 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv|
+!i113 1
+R12
+vdoublesync
+Z27 !s110 1613320185
+!i10b 1
+!s100 h[h?dcIHcN;P79NdP34S[0
+IcjKP2Ne?Hk9Db^hBcBZLC2
+R2
+Z28 dC:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc
+w1612686669
+8C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/doublesync.v
+FC:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/doublesync.v
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1613320185.919000
+!s107 C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/doublesync.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/doublesync.v|
+!i113 1
+Z29 o-work work
+vedge_detect_gate
+R0
+R1
+!i10b 1
+!s100 TdfH_g`@D6d:<aAQkHJ?n2
+ITX:l=kk@eZ=6Hm2efc3@i3
+R2
+R13
+S1
+R4
+R14
+R15
+R16
+L0 56
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R12
+vedge_detect_gate_tb
+R0
+R1
+!i10b 1
+!s100 9ZG2Cf`2^LGOIBG^S6FID2
+IA]H?_mj@BZfBZlh:^DRc;0
+R2
+R20
+S1
+R4
+R21
+R22
+R23
+Z30 L0 21
+R8
+r1
+!s85 0
+31
+R24
+R25
+R26
+!i113 1
+R12
+vflashfsm
+R0
+R1
+!i10b 1
+!s100 :XiI0_`gjbOjmPQ1UfaMH0
+INb5dcWC0P7njFBelVA_GT2
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+vflashfsm_tb
+R0
+R1
+!i10b 1
+!s100 R0cb`a;8NeLE9m>=A1Flm3
+IenzL9]kXoZiCAokl`_S_70
+R2
+R13
+S1
+R4
+R14
+R15
+R16
+L0 74
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R12
+vflopr
+R0
+R1
+!i10b 1
+!s100 ib@g111W7Ye9V8gEM31021
+I`l8h_BL=5OATAiK[KGlW53
+R2
+R20
+S1
+R4
+R21
+R22
+R23
+L0 82
+R8
+r1
+!s85 0
+31
+R24
+R25
+R26
+!i113 1
+R12
+vWrite_Kbd_To_Scope_LCD
+R27
+!i10b 1
+!s100 a``?9?@fSUL[GYkNfNnSe0
+IQoK_0J^C4_IjLINhS@JPR2
+R2
+R28
+w1612686672
+8C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/Write_Kbd_To_Scope_LCD.v
+FC:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/Write_Kbd_To_Scope_LCD.v
+R30
+R8
+r1
+!s85 0
+31
+!s108 1613320185.567000
+!s107 C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/Write_Kbd_To_Scope_LCD.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/lab2_template_de1socmine/template_de1soc/Write_Kbd_To_Scope_LCD.v|
+!i113 1
+R29
+n@write_@kbd_@to_@scope_@l@c@d

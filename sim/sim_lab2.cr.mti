@@ -1,0 +1,30 @@
+C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/flashmemfsm.sv {1 {vlog -work work -sv -stats=none {C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\flashmemfsm.sv}
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module flashfsm
+-- Compiling module addressfsm
+
+Top level modules:
+	flashfsm
+
+} {} {}} {C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/module edge-detect-gate.sv}
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module edge_detect_gate
+-- Compiling module edge_detect_gate_tb
+-- Compiling module asyncsig
+-- Compiling module flopr
+
+Top level modules:
+	edge_detect_gate_tb
+	asyncsig
+
+} {} {}} C:/Users/Mahmoud/Desktop/CPEN311/Lab2/CPEN311-Lab2/Mahmoud_Abdelhadi_Lab_2/sim/mem_tb.sv {1 {vlog -work work -sv -stats=none {C:\Users\Mahmoud\Desktop\CPEN311\Lab2\CPEN311-Lab2\Mahmoud_Abdelhadi_Lab_2\sim\mem_tb.sv}
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module addressfsm_tb
+-- Compiling module edge_detect_gate
+-- Compiling module flashfsm_tb
+
+Top level modules:
+	addressfsm_tb
+	flashfsm_tb
+
+} {} {}}
