@@ -10,6 +10,7 @@ module flashfsm (input logic CLK50MHZ,
 	input logic pause, 
 	input logic direction, 
 	
+	output logic interrupt,
 	output logic flash_mem_read, //set to 1 when you want to read
 	output logic [3:0] flash_mem_byteenable, //During reads, byteenables indicate which bytes the master is reading. Slaves that simply return readdata with no side effects are free to ignore byteenables
 	output logic [15:0] data_out,  //data at specific address
@@ -25,17 +26,26 @@ module flashfsm (input logic CLK50MHZ,
 					.addressready(addressready)
 				);
 //state parameters depending on outputs, explained in flowchart
-parameter wait1 = 10'b00_0000_0000;
-parameter determine_address = 10'b00_0000_0001;
-parameter wait_request = 10'b01_0000_0000;
-parameter address_fetched = 10'b10_0000_0000;
-parameter read_state = 10'b00_1011_1110;
-parameter outputLSB = 10'b11_1000_0000;
-//parameter wait2 = 11'b100_0000_0000;
-parameter outputMSB =10'b00_1100_0000;
-//parameter wait3 = 11'b101_0100_0000;
+parameter wait1 = 13'b0_0000_0000_0000;
+parameter determine_address = 13'b0_0000_0000_0001;
+parameter wait_request = 13'b0_0001_0000_0000;
+parameter address_fetched = 13'b0_0010_0000_0000;
+parameter read_state = 13'b0_0000_1011_1110;
+parameter outputLSB = 13'b0_0011_0000_0000;//change data enable
+parameter outputMSB =13'b0_0000_0100_0000;// change data enable
+parameter outputLSBlow = 13'b0_0100_0000_0000;//change data enable
+parameter outputMSBlow =13'b0_0001_0100_0000;// change data enable
 
-logic [9:0] state;
+parameter interrupt1 = 13'b1_0000_0000_0000;
+parameter interrupt5 = 13'b1_0001_0100_0000;
+parameter interrupt2 = 13'b1_1001_0000_0000;
+parameter interrupt6 = 13'b1_0010_0100_0000;
+parameter interrupt3 = 13'b1_0011_0000_0000;
+parameter interrupt7 = 13'b1_0011_0100_0000;
+parameter interrupt4 = 13'b1_0100_0000_0000; //interrupt high for 4 states 
+parameter interrupt8 = 13'b1_0100_0100_0000;
+
+logic [12:0] state;
 
 
 				always_ff @ (posedge CLK50MHZ or posedge reset) begin
@@ -47,6 +57,7 @@ logic [9:0] state;
 							determine_address: if (flash_mem_waitrequest) state <= wait_request;
 													else if (addressready)
 														state <= address_fetched;
+													else state <= determine_address;
 							wait_request: if (~flash_mem_waitrequest & addressready) //if no wait request from flash memory and address is ready, lower fetch address flag
 												state <= address_fetched;
 										else state <= wait_request;
@@ -55,12 +66,23 @@ logic [9:0] state;
 							read_state: if (flash_mem_readdatavalid) //if read data valid flag is high move to next state
 											state <= outputLSB;
 											else state <= read_state;
-										
-							outputLSB: if(CLK22KHZ) state <= outputMSB; //edge detect clk22
-										else state <= outputLSB;
-							outputMSB: if (CLK22KHZ)state <= wait1;   //counter 1 in state 
-										else state <= outputMSB;
 							
+							outputLSB: if(CLK22KHZ) state <= interrupt1; //edge detect clk22
+										else state <= outputLSB;
+								
+						
+								interrupt1: state <= interrupt2;	
+								interrupt2: state <= outputMSB;	
+								//interrupt3: state <= interrupt4;	
+							//	interrupt4: state <= outputMSB;	
+							outputMSB: if(CLK22KHZ) state <= interrupt5; //edge detect clk22
+							else state <= outputMSB;
+							
+							interrupt5: state <= interrupt6;
+							interrupt6: state <= wait1;
+							//interrupt7: state <= interrupt8;
+							//interrupt8: state <= wait1;
+
 							default: state <= wait1;
 						endcase
 					end
@@ -68,7 +90,7 @@ logic [9:0] state;
 
 
 							
-
+	assign interrupt = state[12];
 	logic [31:0] splitdata;
 	logic dataenable, counter;
 	always_ff @(posedge dataenable)

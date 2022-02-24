@@ -1,8 +1,8 @@
 module edge_detect_gate
 (
 input wire clk50, reset,
-input wire clk22,
-output wire syncclk22
+input wire clkother,
+output wire edge_clk
 );
 // s i g n a l d e c l a r a t i o n
 reg delay_reg;
@@ -11,9 +11,9 @@ always @(posedge clk50, posedge reset)
     if(reset)
     delay_reg <=1'b0;
     else 
-    delay_reg <= clk22;
+    delay_reg <= clkother;
 
-    assign syncclk22 = ~delay_reg & clk22;
+    assign edge_clk = ~delay_reg & clkother;
 
 endmodule
 

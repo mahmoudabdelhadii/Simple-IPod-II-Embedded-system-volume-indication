@@ -224,7 +224,10 @@ wire CLK_22K;
 // Insert your code for Lab2 here!
 //
 //
-
+//led_fsm U3(
+ //   .clock_1Hz(CLK_1Hz),
+ //   .LEDR(LED)      //controls leds from lab1
+ //   );
 Clock_divider U1(
     .clock_in(CLK_50M),
     .reset(1'b0),               // Clock divider for 22KHz 
@@ -251,7 +254,7 @@ keyboard_cont U4(
     );
 	 
 //wire decleration
-    logic [31:0] divisorwire = 32'd1;
+    logic [31:0] divisorwire = 32'd4545;
 speedupspeeddown U5 (
     .clk(CLK_50M), 
     .speed_up(speed_up_event), 
@@ -269,8 +272,8 @@ asyncsig U9(
 );
 
 edge_detect_gate U7(
- .clk50(CLK_50M),      //direct CHU edge detector implementation
- .reset(1'b0),
+.clk50(CLK_50M),      //direct CHU edge detector implementation
+.reset(1'b0),
 .clk22(syncclk222),
 .syncclk22(syncclk22)
 );
@@ -281,9 +284,9 @@ wire    [31:0]  flash_mem_readdata;
 wire            flash_mem_readdatavalid;
 wire    [3:0]   flash_mem_byteenable;
 wire [15:0] data_out;
-
+wire interrupt;
 flashfsm U8 (.CLK50MHZ(CLK_50M), 
-	.CLK22KHZ(syncclk22),
+	.CLK22KHZ(syncclk222),
 	.flash_mem_readdatavalid(flash_mem_readdatavalid), 
 	.flash_mem_waitrequest(flash_mem_waitrequest), 
 	.flash_mem_readdata(flash_mem_readdata),           // Flash controller is fed syncrhonized edge detected clock 22KHz
@@ -293,7 +296,8 @@ flashfsm U8 (.CLK50MHZ(CLK_50M),
 	.flash_mem_read(flash_mem_read), 
 	.flash_mem_byteenable(flash_mem_byteenable), 
 	.data_out(data_out), 
-	.flash_mem_address(flash_mem_address)
+	.flash_mem_address(flash_mem_address),
+    .interrupt(interrupt)
     );
 
 
@@ -317,8 +321,25 @@ wire [5:0] flash_mem_burstcount;
 assign flash_mem_write = 1'b0;
 assign flash_mem_writedata = 32'b0;  //as stated in lab manual, set writes to 0
 assign flash_mem_burstcount = 6'b000001;
+wire CLK_25;
+Clock_divider U11(
+    .clock_in(CLK_50M),
+    .reset(1'b0),               // Clock divider for 25MHz 
+    .DIVISOR(32'd2), 
+    .clock_out(CLK_25)
+    );
 
-
+picoblaze_template 
+#(
+.clk_freq_in_hz  (50000000)
+) 
+picoblaze_inst(
+        .led(LED[9:2]),
+        .clk(CLK_50M),
+        .input_data(data_out[15:8]),
+        .led_0(LED[0]),
+        .interrupt(interrupt)//interrupt
+        );
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
@@ -339,13 +360,6 @@ wire [7:0] audio_data = data_out[15:8];    // takes MSB of data out from read da
 // Keyboard Interface
 //
 //
-sound_averaging sound_average(
-    .clk(CLK_50M),
-    .reset(restartwirekeyboard), 
-    .data_in(audio_data), 
-    .LED(LED[9:2]),
-	 .read_data_valid_flag(flash_mem_readdatavalid)
-    );
 
 wire ps2c, ps2d; //filtered kbd wires
 wire kbd_data_ready, Kbd_to_LCD_finish;
@@ -745,238 +759,3 @@ audio_control(
                     
             
 endmodule
-//=======================================================
-//  LED statemachine
-//=======================================================
-module led_fsm ( input logic clock_1Hz,output logic [7:0] LEDR);
-reg [3:0] ledstate;
-reg [3:0] nextstate;
-
-
-reg[3:0] led1 =4'b0000;
-reg [3:0] led2 =4'b0001;
-reg [3:0] led3 =4'b0010;
-reg[3:0] led4 =4'b0011;
-reg [3:0] led5 =4'b0100;
-reg [3:0] led6 =4'b0101;
-reg [3:0] led7 =4'b0110;
-reg [3:0] led8 =4'b0111;
-//parameter [3:0] led9 4'b1000
-
-always_ff@(posedge clock_1Hz)    //LED lights   [9:0]      LEDR 
-begin
-ledstate <= nextstate;
-end
-
-always_comb //combinational
-begin
-  LEDR[7:0] = 8'b0;
-case (ledstate)
-    led1: begin
-      nextstate = led2;
-      LEDR[0] = 1'b1;
-      LEDR[7] =1'b0;
-	LEDR[1] =1'b0;	
-    end
-    led2: begin
-      nextstate = led3;
-      LEDR[1] = 1'b1;
-      LEDR[0] =1'b0;
-    end
-    led3: begin 
-    nextstate = led4;
-    LEDR[2] = 1'b1;
-    LEDR[1] =1'b0;
-    end
-    led4: begin
-    nextstate = led5;
-    LEDR[3] = 1'b1;
-    LEDR[2] =1'b0;
-    end
-    led5: begin
-    nextstate = led6;
-    LEDR[4] = 1'b1;
-    LEDR[3] =1'b0;
-    end
-
-    led6: 
-	 begin
-    nextstate = led7;
-    LEDR[5] = 1'b1;
-    LEDR[4] =1'b0;
-    end
-    led7: begin
-    nextstate = led8;
-    LEDR[6] = 1'b1;
-    LEDR[5] =1'b0;
-    end
-    led8: begin
-    nextstate = 4'b1000;
-    LEDR[7] = 1'b1;
-    LEDR[6] =1'b0;
-    end
-    4'b1000: begin
-      nextstate = 4'b1001;
-      LEDR[6] = 1'b1;
-      LEDR[7]=1'b0;
-end
-    4'b1001: begin 
-	nextstate = 4'b1010;
-    LEDR[5] = 1'b1;
-      LEDR[6]=1'b0;
-end
-    4'b1010: begin 
-	nextstate = 4'b1011;
-    LEDR[4] = 1'b1;
-      LEDR[5]=1'b0;
-end
-    4'b1011: begin 
-	nextstate = 4'b1100;
-    LEDR[3] = 1'b1;
-      LEDR[4]=1'b0;
-end
-    4'b1100: begin
-	nextstate = 4'b1101;
-    LEDR[2] = 1'b1;
-      LEDR[3]=1'b0;
-end
-    4'b1101:begin
- nextstate = led1;
-    LEDR[1] = 1'b1;
-      LEDR[2]=1'b0;
-end
-    4'b1110: nextstate = led1;
-    4'b1111: nextstate = led1;
-      default: nextstate = led1;
-endcase
-end
-
-endmodule
-//=======================================================
-//  CLock Divider
-//=======================================================
-module Clock_divider(
-    input logic clock_in,
-    input logic reset,
-    input logic [31:0] DIVISOR, 
-    output logic clock_out
-    );
-
-logic [31:0] counter=32'd0;
-
-always_ff @(posedge clock_in)
-begin
- counter <= counter + 32'd1;
- if (reset)begin
-     counter<= 32'd0;
-     clock_out<= 1'b0;
- end
- 
- else if(counter>=(DIVISOR-1))
- counter <= 32'd0;
- 
-clock_out <= (counter<DIVISOR/2)?1'b1:1'b0;
-
-end
-endmodule
-//=======================================================
-//  Keyboard direction, pause and restart
-//=======================================================
-module keyboard_cont(clock, reset, pressedkey, direction, pause, restart);
-	input logic clock, reset;
-	input logic [7:0] pressedkey;
-	output logic direction, pause, restart;
-	logic [3:0] state= 4'b1101;
-	//state parameters
-	parameter init = 			4'b1101;
-	parameter forward_start = 	4'b1000;
-	parameter forward_pause = 	4'b1100;
-	parameter forward_restart = 4'b1001;
-	parameter backward_start = 	4'b0000;
-	parameter backward_pause = 	4'b0100;
-	parameter backward_restart =4'b0001;
-	//keyboard ascii codes
-	parameter character_B = 8'h42;
-	parameter character_D = 8'h44;
-	parameter character_E = 8'h45;
-	parameter character_F = 8'h46;
-	parameter character_R = 8'h52;
-	
-	//outputs assigned from states
-    always_comb
-	begin
-		direction <= state[3]; // 1 for forward 0 for backwards
-		pause <= state[2];   
-		restart <= state[0];
-	end
-
-	always_ff @(posedge clock or posedge reset)
-	begin
-		if (reset) begin
-			 if (!direction)
-					state <= backward_restart;
-					else state <= forward_restart;
-					end
-		else
-			begin
-				case(state)
-					
-				init:	begin if (pressedkey == character_E)				
-						state <= forward_start;
-				 else if (pressedkey == character_B)
-						state <= backward_start;
-				 else
-						state <= init;
-					end
-				forward_start:  if (pressedkey == character_R) begin 
-                                                                state <= forward_restart;
-                                                                end
-								else if (pressedkey == character_D) begin 
-                                                                state <= forward_pause; // continues playing from where we left off
-                                                                    end 
-								else if (pressedkey == character_B) begin 
-                                                                state <= backward_start;
-                                                                    end
-								else state <= forward_start;
-				forward_pause:  begin  if (pressedkey == character_E)   
-                                                                state <= forward_start;
-								//else if (pressedkey == character_F) state <= forward_start;
-								else if (pressedkey == character_B) state <= backward_start;  //pauses at address we are playing
-								else if (pressedkey == character_R) state <= forward_restart;
-								else state <= forward_pause;
-								end
-				forward_restart: state <= forward_start;    //restarts from begining
-
-				backward_start:	if (pressedkey == character_R) state <= backward_restart;
-								else if (pressedkey == character_D) state <= backward_pause; // starts in the backwards direction
-								else if (pressedkey == character_F) state <= forward_start;
-								else state <= backward_start;
-				backward_pause:	if (pressedkey == character_E) state <= backward_start;
-								else if (pressedkey == character_F) state <= forward_start;
-								else if (pressedkey == character_R) state <= backward_restart; //pauses in the backwards direction 
-								else state <= backward_pause;
-				backward_restart: state <= backward_start;             //restarts backwards
-						
-						default: state <= init;
-					endcase
-				end
-		end
-endmodule
-
-module speedupspeeddown(clk, speed_up, speed_down, reset, divider);
-	parameter base = 32'd4545;
-	
-	input logic speed_up, speed_down, reset;
-	input logic clk;
-
-	
-	output logic [31:0] divider = base;
-	
-	always @(posedge clk)
-	begin
-			if (speed_up)			 	divider <= divider - 1;
-			else if(speed_down) 		divider <=divider + 1;
-			else if(reset)				divider <= base;
-	end
-		
-endmodule	

@@ -39,7 +39,7 @@ module Write_Kbd_To_LCD(kbd_data, kbd_ready, reset_kbd_data, start_LCD_writer, L
 	 parameter finished               = 8'b1000_0101;
 		
 	 reg[7:0] state;
-	 
+	 wire actual_kbd_ready;
 	 assign start_LCD_writer = state[4];
 	 assign reset_kbd_data = state[5];
 	 assign finish = state[7];

@@ -1,0 +1,247 @@
+Analysis & Synthesis report for simple_ipod_lab3
+Sat Feb 27 19:12:43 2021
+Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++--------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                             ;
++-----------------------------+--------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Sat Feb 27 19:12:43 2021          ;
+; Quartus II 64-Bit Version   ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
+; Revision Name               ; simple_ipod_lab3                           ;
+; Top-level Entity Name       ; simple_ipod_solution                       ;
+; Family                      ; Cyclone V                                  ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
+; Total registers             ; N/A until Partition Merge                  ;
+; Total pins                  ; N/A until Partition Merge                  ;
+; Total virtual pins          ; N/A until Partition Merge                  ;
+; Total block memory bits     ; N/A until Partition Merge                  ;
+; Total PLLs                  ; N/A until Partition Merge                  ;
+; Total DLLs                  ; N/A until Partition Merge                  ;
++-----------------------------+--------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                               ;
++---------------------------------------------------------------------------------+----------------------+--------------------+
+; Option                                                                          ; Setting              ; Default Value      ;
++---------------------------------------------------------------------------------+----------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6         ;                    ;
+; Top-level entity name                                                           ; simple_ipod_solution ; simple_ipod_lab3   ;
+; Family name                                                                     ; Cyclone V            ; Cyclone IV GX      ;
+; Use smart compilation                                                           ; Off                  ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                   ; On                 ;
+; Enable compact report table                                                     ; Off                  ; Off                ;
+; Restructure Multiplexers                                                        ; Auto                 ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                  ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                  ; Off                ;
+; Preserve fewer node names                                                       ; On                   ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                  ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001         ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993            ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto                 ; Auto               ;
+; Safe State Machine                                                              ; Off                  ; Off                ;
+; Extract Verilog State Machines                                                  ; On                   ; On                 ;
+; Extract VHDL State Machines                                                     ; On                   ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                  ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000                 ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                  ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                   ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                   ; On                 ;
+; Parallel Synthesis                                                              ; On                   ; On                 ;
+; DSP Block Balancing                                                             ; Auto                 ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                   ; On                 ;
+; Power-Up Don't Care                                                             ; On                   ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                  ; Off                ;
+; Remove Duplicate Registers                                                      ; On                   ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                  ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                  ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                  ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                  ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                  ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                   ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                  ; Off                ;
+; Optimization Technique                                                          ; Balanced             ; Balanced           ;
+; Carry Chain Length                                                              ; 70                   ; 70                 ;
+; Auto Carry Chains                                                               ; On                   ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                   ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                  ; Off                ;
+; Auto ROM Replacement                                                            ; On                   ; On                 ;
+; Auto RAM Replacement                                                            ; On                   ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                   ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto                 ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto                 ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                   ; On                 ;
+; Strict RAM Replacement                                                          ; Off                  ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                   ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                  ; Off                ;
+; Auto Resource Sharing                                                           ; Off                  ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                  ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                  ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                  ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                   ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                  ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                   ; On                 ;
+; Report Parameter Settings                                                       ; On                   ; On                 ;
+; Report Source Assignments                                                       ; On                   ; On                 ;
+; Report Connectivity Checks                                                      ; On                   ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                  ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                    ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation   ; Normal compilation ;
+; HDL message level                                                               ; Level2               ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                  ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000                 ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000                 ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                  ; 100                ;
+; Clock MUX Protection                                                            ; On                   ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                  ; Off                ;
+; Block Design Naming                                                             ; Auto                 ; Auto               ;
+; SDC constraint protection                                                       ; Off                  ; Off                ;
+; Synthesis Effort                                                                ; Auto                 ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                   ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                  ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium               ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto                 ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                   ; On                 ;
+; Synthesis Seed                                                                  ; 1                    ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                   ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                  ; Off                ;
++---------------------------------------------------------------------------------+----------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+    Info: Processing started: Sat Feb 27 19:12:27 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off simple_ipod_lab3 -c simple_ipod_lab3
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file var_clk_div32.qxp
+    Info (12023): Found entity 1: var_clk_div32
+Info (12021): Found 1 design units, including 1 entities, in source file to_slow_clk_interface.qxp
+    Info (12023): Found entity 1: to_slow_clk_interface
+Info (12021): Found 1 design units, including 1 entities, in source file speed_reg_control.qxp
+    Info (12023): Found entity 1: speed_reg_control
+Info (12021): Found 1 design units, including 1 entities, in source file sevensegmentdisplaydecoder.qxp
+    Info (12023): Found entity 1: SevenSegmentDisplayDecoder
+Info (12021): Found 1 design units, including 1 entities, in source file scope_capture.qxp
+    Info (12023): Found entity 1: scope_capture
+Info (12021): Found 1 design units, including 1 entities, in source file lcd_scope_encapsulated_pacoblaze.qxp
+    Info (12023): Found entity 1: LCD_Scope_Encapsulated_pacoblaze
+Info (12021): Found 1 design units, including 1 entities, in source file flash.qxp
+    Info (12023): Found entity 1: flash
+Info (12021): Found 1 design units, including 1 entities, in source file audio_controller.qxp
+    Info (12023): Found entity 1: audio_controller
+Info (12021): Found 1 design units, including 1 entities, in source file async_trap_and_reset_gen_1_pulse.qxp
+    Info (12023): Found entity 1: async_trap_and_reset_gen_1_pulse
+Info (12021): Found 1 design units, including 1 entities, in source file async_trap_and_reset.qxp
+    Info (12023): Found entity 1: async_trap_and_reset
+Info (12021): Found 5 design units, including 5 entities, in source file simple_ipod_solution.sv
+    Info (12023): Found entity 1: simple_ipod_solution
+    Info (12023): Found entity 2: led_fsm
+    Info (12023): Found entity 3: Clock_divider
+    Info (12023): Found entity 4: keyboard_cont
+    Info (12023): Found entity 5: speedupspeeddown
+Info (12021): Found 4 design units, including 4 entities, in source file module edge-detect-gate.sv
+    Info (12023): Found entity 1: edge_detect_gate
+    Info (12023): Found entity 2: edge_detect_gate_tb
+    Info (12023): Found entity 3: asyncsig
+    Info (12023): Found entity 4: flopr
+Info (12021): Found 2 design units, including 2 entities, in source file flashmemfsm.sv
+    Info (12023): Found entity 1: flashfsm
+    Info (12023): Found entity 2: addressfsm
+Info (12021): Found 1 design units, including 1 entities, in source file write_kbd_to_scope_lcd.v
+    Info (12023): Found entity 1: Write_Kbd_To_Scope_LCD
+Info (12021): Found 1 design units, including 1 entities, in source file write_kbd_to_lcd.v
+    Info (12023): Found entity 1: Write_Kbd_To_LCD
+Info (12021): Found 1 design units, including 1 entities, in source file widereg.v
+    Info (12023): Found entity 1: widereg
+Info (12021): Found 1 design units, including 1 entities, in source file lcd_scope_encapsulated_pacoblaze_wrapper.v
+    Info (12023): Found entity 1: LCD_Scope_Encapsulated_pacoblaze_wrapper
+Info (12021): Found 1 design units, including 1 entities, in source file key2ascii.v
+    Info (12023): Found entity 1: key2ascii
+Info (12021): Found 1 design units, including 1 entities, in source file kbd_ctrl.v
+    Info (12023): Found entity 1: Kbd_ctrl
+Info (12021): Found 1 design units, including 1 entities, in source file generate_arbitrary_divided_clk32.v
+    Info (12023): Found entity 1: Generate_Arbitrary_Divided_Clk32
+Info (12021): Found 1 design units, including 1 entities, in source file doublesync.v
+    Info (12023): Found entity 1: doublesync
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(47): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(48): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(49): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(50): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(51): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(52): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(53): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at Write_Kbd_To_Scope_LCD.v(54): Parameter Declaration in module "Write_Kbd_To_Scope_LCD" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Info (12127): Elaborating entity "simple_ipod_solution" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at simple_ipod_solution.sv(316): object "flash_mem_write" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at simple_ipod_solution.sv(317): object "flash_mem_writedata" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at simple_ipod_solution.sv(318): object "flash_mem_burstcount" assigned a value but never read
+Error (10232): Verilog HDL error at simple_ipod_solution.sv(332): index 9 cannot fall outside the declared range [7:0] for vector "LED" File: C:/Users/Mahmoud/Desktop/CPEN311/Lab3/Mahmoud_Abdelhadi_Lab_3/rtl/simple_ipod_solution.sv Line: 332
+Error (12153): Can't elaborate top-level user hierarchy
+Info (144001): Generated suppressed messages file C:/Users/Mahmoud/Desktop/CPEN311/Lab3/Mahmoud_Abdelhadi_Lab_3/rtl/output_files/simple_ipod_lab3.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 11 warnings
+    Error: Peak virtual memory: 4784 megabytes
+    Error: Processing ended: Sat Feb 27 19:12:43 2021
+    Error: Elapsed time: 00:00:16
+    Error: Total CPU time (on all processors): 00:00:19
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Mahmoud/Desktop/CPEN311/Lab3/Mahmoud_Abdelhadi_Lab_3/rtl/output_files/simple_ipod_lab3.map.smsg.
+
+
